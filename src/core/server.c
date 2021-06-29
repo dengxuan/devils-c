@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    address.host = ENET_HOST_ANY;
+    address.host = DEVILS_HOST_ANY;
     address.port = 1234;
     server = devils_host_create(&address /* the address to bind the server host to */,
                                 32 /* allow up to 32 clients and/or outgoing connections */,
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
                 /* Clean up the packet now that we're done using it. */
                 devils_packet_destroy(event.packet);
                 /* Create a new packet. */
-                packet = devils_packet_create(NULL, 50, ENET_PACKET_FLAG_RELIABLE);
+                packet = devils_packet_create(NULL, 50, DEVILS_PACKET_FLAG_RELIABLE);
                 memset(packet->data, 0, 50);
                 sprintf((char *)packet->data, "Hi, I have got the packet %u.", client->packet_count - 1);
                 /* Send it back. */

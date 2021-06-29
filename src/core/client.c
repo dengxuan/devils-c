@@ -110,7 +110,7 @@ int main(int argc, char **argv)
         packet = devils_packet_create(NULL /* initial contents of the packet's data */,
                                       packet_length /* size of the data allocated for this packet */,
                                       DEVILS_PACKET_FLAG_RELIABLE /* flags for this packet */);
-        memset(packet->data, 0, packet_length);
+        memset(packet->data, '0', packet_length);
         sprintf((char *)packet->data, "packet %d", i);
         devils_peer_send(peer /* destination for the packet */,
                          i % 2 /* channel on which to send */,
@@ -138,6 +138,7 @@ int main(int argc, char **argv)
             /* Something is wrong. */
             fprintf(stderr, "Lost reply packet %d\n", i);
         }
+        sleep(1);
     }
     fprintf(stdout, "PacketCount=%d Time=%u\n", packet_count, devils_time_get() - time_begin);
 
@@ -176,7 +177,7 @@ int main(int argc, char **argv)
         {
             /* Timeout or failure */
             fprintf(stderr, "Disconnect failed\n");
-            edevils_peer_reset(peer);
+            devils_peer_reset(peer);
         }
     }
 

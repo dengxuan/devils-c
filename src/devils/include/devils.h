@@ -15,7 +15,7 @@ extern "C"
 #ifdef _WIN32
 #include "../win32/win32.h"
 #else
-#include "unix/unix.h"
+#include "../unix/unix.h"
 #endif
 
 #include "devils_types.h"

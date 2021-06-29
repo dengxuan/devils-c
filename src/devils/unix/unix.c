@@ -16,7 +16,7 @@
 #include <time.h>
 
 #define DEVILS_BUILDING_LIB 1
-#include "devils/devils.h"
+#include "../include/devils.h"
 
 #ifdef __APPLE__
 #ifdef HAS_POLL
